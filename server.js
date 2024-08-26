@@ -13,6 +13,10 @@ const server = http.createServer((req, res) => {
       filename = "contact.html";
       res.statusCode = 200;
       break;
+    case "/contact-us":
+      res.setHeader("Location", "/contact");
+      res.statusCode = 301;
+      break;
     case "/about":
       filename = "about.html";
       res.statusCode = 200;
