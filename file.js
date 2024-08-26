@@ -91,6 +91,6 @@ if (fs.existsSync("./new-folder")) {
     if (err) {
       console.log(err);
     }
-    console.log("folder created");
+    console.log("folder created.");
   });
 }
