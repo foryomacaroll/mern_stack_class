@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     name: "mgmg",
     age: 22,
     // blogs: blogs
-    blogs, // shorthand
+    blogs, // ***** short-hand (render the array)
   });
 });
 app.get("/about", (req, res) => {
