@@ -1,0 +1,13 @@
+EP 13
+=====
+$ npm i lodash // without g flag // only in single project // i = install
+$ npm install
+$ npm init -y // to notify node to use third party modules
+
+- in package.json, in "scripts", "start" = command. // like alias //
+// eg: "start": "nodemon server.js" ==> run command "nodemon server.js"
+$ npm run start // start = command
+
+- node_modules ==> dependencies package codes // May be many
+// not include in Git // download with package manager command.
+$ npm install
