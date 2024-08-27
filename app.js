@@ -3,26 +3,25 @@
 const express = require("express");
 const app = express();
 
+app.set("views", "./views");
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");
-  res.sendFile("./views/home.html", { root: __dirname });
+  res.render("home");
 });
 app.get("/about", (req, res) => {
-  res.sendFile("./views/about.html", { root: __dirname });
-});
-app.get("/about-us", (req, res) => {
-  // Redirect to /about page
-  res.redirect("/about");
+  res.render("about");
 });
 app.get("/contact", (req, res) => {
-  res.sendFile("./views/contact.html", { root: __dirname });
+  res.render("contact");
 });
 app.use((req, res) => {
   // Fall-Back
-  res.status(404);
-  res.sendFile("./views/404.html", { root: __dirname });
+  //   res.status(404);
+  //   res.render("404");
+  res.status(404).render("404");
 });
-
 // app.use must be write in end of route codes.
 // Because, if a routes comes in, express js will search the route from up to down
 // if the route match the method, it will not search for remaining codes.
