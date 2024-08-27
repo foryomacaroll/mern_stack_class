@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <!-- <% // const name1 = "Kyaw Zayar" %> -->
+  <!-- Cannot comment for ejs code like html codes. -->
+  <!--  Ejs form and variable -->
   <body>
     <nav>
       <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </nav>
-    <h1>Home Page Update</h1>
+    <h1>Name - <%= name %></h1>
+    <h1>Age - <%= age %></h1>
+    <br />
+    <br />
+    <!-- <h1>Blog title 1</h1>
+    <p>blog intro ...</p>
+    <h1>Blog title 2</h1>
+    <p>blog intro ...</p>
+    <h1>Blog title 33</h1>
+    <p>blog intro ...</p> -->
+    <% if (blogs.length){ %> <% blogs.forEach(blog => { %>
+    <h1><%= blog.title %></h1>
+    <p><%= blog.intro %></p>
+    <% })} else { %>
+    <h3>No Blogs Found</h3>
+    <% } %>
+
+    <!-- blogs ==> in app.js file -->
+
     <p>This is HTML file</p>
   </body>
 </html>

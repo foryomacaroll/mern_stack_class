@@ -8,7 +8,19 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");
-  res.render("home");
+
+  let blogs = [
+    { title: "Blog title 1 update", intro: "this is blog intro 1" },
+    { title: "Blog title 2", intro: "this is blog intro 2" },
+    { title: "Blog title 3", intro: "this is blog intro 3" },
+  ];
+
+  res.render("home", {
+    name: "mgmg",
+    age: 22,
+    // blogs: blogs
+    blogs, // shorthand
+  });
 });
 app.get("/about", (req, res) => {
   res.render("about");
