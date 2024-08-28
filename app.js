@@ -6,6 +6,13 @@ const app = express();
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+
+
+app.use((req,res,next)=>{ // Middleware Concept
+  console.log("middleweare is running")
+  next()
+})
+
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");
 
@@ -28,6 +35,10 @@ app.get("/about", (req, res) => {
     title: "About"
   });
 });
+app.use((req,res,next)=>{ // Middleware Concept
+  console.log("second middleweare is running")
+  next()
+})
 app.get("/contact", (req, res) => {
   res.render("contact",{
     title: "Contact"
