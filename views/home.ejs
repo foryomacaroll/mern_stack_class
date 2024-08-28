@@ -9,11 +9,16 @@
   <!-- Cannot comment for ejs code like html codes. -->
   <!--  Ejs form and variable -->
   <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-    </nav>
+
+    <%- include('./components/navbar.ejs') %>
+
+    <%= "<h1>Hello World</h1>" %>
+    <!-- < %= is not render html elements. -->
+     <!-- < %- will render html elements when it is secure condition. 
+      Should not use in User Input Box for security concern. -->
+    <%- "<h1>Hello World</h1>" %>
+
+
     <h1>Name - <%= name %></h1>
     <h1>Age - <%= age %></h1>
     <br />
