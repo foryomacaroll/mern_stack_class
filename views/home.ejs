@@ -1,41 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./components/head.ejs') %>
-  <!-- <% // const name1 = "Kyaw Zayar" %> -->
-  <!-- Cannot comment for ejs code like html codes. -->
-  <!--  Ejs form and variable -->
+
   <body>
 
     <%- include('./components/navbar.ejs') %>
 
     <div class="container">
-      <%= "<h1>Hello World</h1>" %>
-      <!-- < %= is not render html elements. -->
-       <!-- < %- will render html elements when it is secure condition. 
-        Should not use in User Input Box for security concern. -->
-      <%- "<h1>Hello World</h1>" %>
-  
-  
-      <h1>Name - <%= name %></h1>
-      <h1>Age - <%= age %></h1>
-      <br />
-      <br />
-      <!-- <h1>Blog title 1</h1>
-      <p>blog intro ...</p>
-      <h1>Blog title 2</h1>
-      <p>blog intro ...</p>
-      <h1>Blog title 33</h1>
-      <p>blog intro ...</p> -->
+
       <% if (blogs.length){ %> <% blogs.forEach(blog => { %>
-      <h1><%= blog.title %></h1>
-      <p><%= blog.intro %></p>
+      <div class="blog-card">
+        <h1><%= blog.title %></h1>
+        <p><%= blog.intro %></p>
+      </div>
       <% })} else { %>
       <h3>No Blogs Found</h3>
       <% } %>
-  
-      <!-- blogs ==> in app.js file -->
-  
-      <p>This is HTML file</p>
+
     </div>
 
   </body>
