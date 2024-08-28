@@ -20,19 +20,26 @@ app.get("/", (req, res) => {
     age: 22,
     // blogs: blogs
     blogs, // ***** short-hand (render the array)
+    title: "Home"
   });
 });
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about",{
+    title: "About"
+  });
 });
 app.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact",{
+    title: "Contact"
+  });
 });
 app.use((req, res) => {
   // Fall-Back
   //   res.status(404);
   //   res.render("404");
-  res.status(404).render("404");
+  res.status(404).render("404",{
+    title: "404 Not Found"
+  });
 });
 // app.use must be write in end of route codes.
 // Because, if a routes comes in, express js will search the route from up to down
