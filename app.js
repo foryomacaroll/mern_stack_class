@@ -3,6 +3,7 @@
 let morgan = require('morgan')
 const express = require("express");
 const mongoose = require('mongoose');
+const Blog = require('./models/Blogs')
 const app = express();
 
 // db url
@@ -17,26 +18,25 @@ mongoose.connect(mongoUrl).then(()=>{
 })
 
 app.set("views", "./views");
-app.set("view engine", "ejs");
-
-// Custom Middleware (Eg: of morgan)
-// =================================
-// let logger = (env) => {
-//   return (req,res,next)=>{ // Middleware Concept
-//     if (env === 'dev' ){
-//       console.log(`${req.method} ${req.originalUrl} -- `)
-//     }
-//     next()
-//   }
-// }
-
-// app.use(logger('dev'))
+app.set("view engine", "ejs")
 
 // Morgan Package
 // ===============
 app.use(morgan('dev'))
 app.use(express.static('public')) 
 // to connect 'public' folder // link:port/public
+
+app.get('/add-blog', async (req,res)=>{
+  let blog = new Blog({
+    title: "blog title 2",
+    intro: "blog intro 2",
+    body: "blog body 2"
+  });
+
+  await blog.save();
+  res.send('blog saved')
+
+})
 
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");

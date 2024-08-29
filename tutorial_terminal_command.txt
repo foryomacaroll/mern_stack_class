@@ -42,3 +42,14 @@ EP-23 Express Static
 To use foldersa and files in public, we need to connect static express.
 
 app.use(express.static('public')) 
+
+ep-27 mongo-Schema
+==================
+
+- Schema (title (string), intro (string))
+- Model ==> save, get, update, delete
+
+user collection     ==> user
+blogs collection    ==> blog
+products collection ==> product
+
