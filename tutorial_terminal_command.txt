@@ -28,3 +28,12 @@ Eg: app.set('views', './views')
 app.set("view engine", "ejs");
 
 - change xxx.html to xxx.ejs
+
+EP-21 Node Middlewares
+======================
+(What) The functions that run between Request and Respond.
+
+(Why) If we want to make something to work on every request and response, we can
+use middleware. For example - logging the request infos, protect the auth routes, 
+protect the premium pages, parse the data or infos, etc
+

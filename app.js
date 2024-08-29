@@ -1,17 +1,28 @@
 // start from ep14  Express js
 // ============================
+let morgan = require('morgan')
 const express = require("express");
 const app = express();
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+// Custom Middleware (Eg: of morgan)
+// =================================
+// let logger = (env) => {
+//   return (req,res,next)=>{ // Middleware Concept
+//     if (env === 'dev' ){
+//       console.log(`${req.method} ${req.originalUrl} -- `)
+//     }
+//     next()
+//   }
+// }
 
+// app.use(logger('dev'))
 
-app.use((req,res,next)=>{ // Middleware Concept
-  console.log("middleweare is running")
-  next()
-})
+// Morgan Package
+// ===============
+app.use(morgan('dev'))
 
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");
