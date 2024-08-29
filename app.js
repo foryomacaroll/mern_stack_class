@@ -23,6 +23,8 @@ app.set("view engine", "ejs");
 // Morgan Package
 // ===============
 app.use(morgan('dev'))
+app.use(express.static('public')) 
+// to connect 'public' folder // link:port/public
 
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World</h1>");

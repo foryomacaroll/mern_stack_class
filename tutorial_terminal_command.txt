@@ -37,3 +37,8 @@ EP-21 Node Middlewares
 use middleware. For example - logging the request infos, protect the auth routes, 
 protect the premium pages, parse the data or infos, etc
 
+EP-23 Express Static
+=====================
+To use foldersa and files in public, we need to connect static express.
+
+app.use(express.static('public')) 
