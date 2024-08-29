@@ -2,10 +2,19 @@
 // ============================
 let morgan = require('morgan')
 const express = require("express");
+const mongoose = require('mongoose');
 const app = express();
 
 // db url
 let mongoUrl = "mongodb+srv://foryomacaroll:test1234@cluster0.uhzcy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+mongoose.connect(mongoUrl).then(()=>{
+  console.log('CONNECTED TO DB')
+  app.listen(3000, () => {
+    console.log("app is running on port 3000");
+  });
+}).catch(e => {
+  console.log(e)
+})
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
@@ -74,6 +83,4 @@ app.use((req, res) => {
 /* *** if we write app.use between routes, the method routes under app.use will never
 be found anymore. */
 
-app.listen(3000, () => {
-  console.log("app is running on port 3000");
-});
+
