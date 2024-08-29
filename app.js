@@ -4,6 +4,9 @@ let morgan = require('morgan')
 const express = require("express");
 const app = express();
 
+// db url
+let mongoUrl = "mongodb+srv://foryomacaroll:test1234@cluster0.uhzcy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
