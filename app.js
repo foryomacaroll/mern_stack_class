@@ -4,6 +4,7 @@ let morgan = require('morgan')
 const express = require("express");
 const mongoose = require('mongoose');
 const Blog = require('./models/Blogs')
+var expressLayouts = require('express-ejs-layouts');
 const app = express();
 
 // db url
@@ -19,6 +20,8 @@ mongoose.connect(mongoUrl).then(()=>{
 
 app.set("views", "./views");
 app.set("view engine", "ejs")
+app.use(expressLayouts);
+app.set('layout', 'layouts/default');
 
 // Morgan Package
 // ===============
@@ -81,6 +84,11 @@ app.use((req,res,next)=>{ // Middleware Concept
 app.get("/contact", (req, res) => {
   res.render("contact",{
     title: "Contact"
+  });
+});
+app.get("/blogs/create", (req, res) => {
+  res.render("blogs/create",{
+    title: "Blog Create"
   });
 });
 app.use((req, res) => {
