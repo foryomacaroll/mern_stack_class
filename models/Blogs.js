@@ -13,7 +13,7 @@ const BlogSchema = mongoose.Schema({
         type: String,
         require: true
     }
-})
+},{timestamps: true})
 
 const Blog = mongoose.model('Blog', BlogSchema) // Convention - singular, Capitalize
 module.exports = Blog;

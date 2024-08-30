@@ -28,9 +28,9 @@ app.use(express.static('public'))
 
 app.get('/add-blog', async (req,res)=>{
   let blog = new Blog({
-    title: "blog title 2",
-    intro: "blog intro 2",
-    body: "blog body 2"
+    title: "blog title 3",
+    intro: "blog intro 3",
+    body: "blog body 3"
   });
 
   await blog.save();
@@ -38,14 +38,28 @@ app.get('/add-blog', async (req,res)=>{
 
 })
 
-app.get("/", (req, res) => {
+app.get('/single-blog', async (req,res)=>{
+
+  let blog = await Blog.findById('66d166e78108996c5f35ad9c');
+  // res.send('blog saved')
+  res.json(blog)
+
+})
+
+app.get("/", async (req, res) => {
   //   res.send("<h1>Hello World</h1>");
 
-  let blogs = [
-    { title: "Blog title 1 update", intro: "this is blog intro 1" },
-    { title: "Blog title 2", intro: "this is blog intro 2" },
-    { title: "Blog title 3", intro: "this is blog intro 3" },
-  ];
+  // Read data from Mongo
+  // =====================
+
+  // let blogs = [
+  //   { title: "Blog title 1 update", intro: "this is blog intro 1" },
+  //   { title: "Blog title 2", intro: "this is blog intro 2" },
+  //   { title: "Blog title 3", intro: "this is blog intro 3" },
+  // ];
+
+  let blogs = await Blog.find().sort({createdAt: -1})
+  console.log(blogs)
 
   res.render("home", {
     name: "mgmg",
