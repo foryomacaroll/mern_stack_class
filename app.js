@@ -7,6 +7,8 @@ const Blog = require('./models/Blogs')
 var expressLayouts = require('express-ejs-layouts');
 const app = express();
 
+app.use(express.urlencoded({extended: true}))
+
 // db url
 let mongoUrl = "mongodb+srv://foryomacaroll:test1234@cluster0.uhzcy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 mongoose.connect(mongoUrl).then(()=>{
@@ -50,28 +52,30 @@ app.get('/single-blog', async (req,res)=>{
 })
 
 app.get("/", async (req, res) => {
-  //   res.send("<h1>Hello World</h1>");
-
-  // Read data from Mongo
-  // =====================
-
-  // let blogs = [
-  //   { title: "Blog title 1 update", intro: "this is blog intro 1" },
-  //   { title: "Blog title 2", intro: "this is blog intro 2" },
-  //   { title: "Blog title 3", intro: "this is blog intro 3" },
-  // ];
-
   let blogs = await Blog.find().sort({createdAt: -1})
   console.log(blogs)
 
   res.render("home", {
     name: "mgmg",
     age: 22,
-    // blogs: blogs
     blogs, // ***** short-hand (render the array)
     title: "Home"
   });
 });
+
+app.post("/blogs", async (req, res) => {
+  let {title,intro,body} = req.body
+  let blog = new Blog({
+    title,
+    intro,
+    body
+  });
+
+  await blog.save();
+
+  res.redirect('/')
+});
+
 app.get("/about", (req, res) => {
   res.render("about",{
     title: "About"
