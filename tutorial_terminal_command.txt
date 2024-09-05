@@ -53,3 +53,12 @@ user collection     ==> user
 blogs collection    ==> blog
 products collection ==> product
 
+ep-33 Delete post
+===============================
+app.js, home.ejs, style.css
+
+ep-34 
+====
+MVC = model, view, controller
+
+
