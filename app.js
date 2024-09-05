@@ -43,16 +43,6 @@ app.get('/add-blog', async (req,res)=>{
 
 })
 
-app.get('/blogs/:id', async (req,res)=>{
-  let id = req.params.id
-  let blog = await Blog.findById(id);
-  res.render("blogs/show", {
-    blog,
-    title: 'Blog Detail'
-  });
-  console.log(blog)
-})
-
 app.get("/", async (req, res) => {
   let blogs = await Blog.find().sort({createdAt: -1})
   console.log(blogs)
@@ -97,6 +87,33 @@ app.get("/blogs/create", (req, res) => {
     title: "Blog Create"
   });
 });
+
+app.get('/blogs/:id/delete', async (req,res,next)=>{ // ep33 delete post
+  try{
+    let id = req.params.id
+    await Blog.findByIdAndDelete(id)
+    res.redirect('/')
+  } catch(e){
+    console.log(e)
+    next()
+  }
+})
+
+app.get('/blogs/:id', async (req,res,next)=>{
+  try{
+    let id = req.params.id
+    let blog = await Blog.findById(id);
+    res.render("blogs/show", {
+      blog,
+      title: 'Blog Detail'
+    });
+    console.log(blog)
+  } catch(e){
+    console.log(e)
+    next()
+  }
+})
+
 app.use((req, res) => {
   // Fall-Back
   //   res.status(404);
